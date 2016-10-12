@@ -70,9 +70,12 @@ Each animation use GPU acceleration to give a smoother movement, essential for h
 
 ## Dependecies
 
-Roboto font style for text
-Ng Animate to close the previous snackbar when you try to open a new one in the same time. For any further explanation contact me via comments please. Thanks!
-The code is licensed under GNU AGP v3 license.
+- Roboto font style
+- Ng Animate
+
+## License
+
+The code is licensed under GNU AGP v3 license. Check license.txt for further details.
 
 ## Contacts
 
