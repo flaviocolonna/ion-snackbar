@@ -25,14 +25,28 @@ angular.module("snackbar", ['ngAnimate']).service('$snackbar', function($http, $
           reject("Message in the snackbar not defined");
           return;
         }
-        var buttonName = options.buttonName ? options.buttonName : false;
+        var buttonName = options.buttonName ? options.buttonName.trim() : false;
         var buttonFunction = options.buttonFunction ? options.buttonFunction : this.hide;
         var buttonColor = options.buttonColor ? options.buttonColor : '#a1c2fa';
         var messageColor = options.messageColor ? options.messageColor : 'white';
-        var time = options.time ? parseInt(options.time) : 3000;
+        var time = options.time ? options.time : 'SHORT';
+        var timeMs;
+        switch(time) {
+            case 'SHORT':
+                timeMs = 3000;
+                break;
+            case 'LONG':
+                timeMs = 8000;
+                break;
+            case 'INDETERMINATE':
+                timeMs = 0;
+                break;
+            default:
+                timeMs = 3000;
+        }
         template.then(function(res) {
           angular.element(document.getElementsByClassName("snackbar-btn")).remove();
-          if(buttonName) {
+          if(buttonName && buttonName.length > 0) {
             var button = angular.element(document.createElement("a"));
             button.addClass("snackbar-btn")
             button.text(buttonName);
@@ -45,16 +59,25 @@ angular.module("snackbar", ['ngAnimate']).service('$snackbar', function($http, $
           angular.element(wrapper).find('span').css('color', messageColor);
           angular.element(wrapper).addClass("active");
         });
-        timeout = setTimeout(function() {
-          angular.element(wrapper).removeClass("active");
-          resolve("1");
-        }, time);
+        if(timeMs > 0){
+            timeout = setTimeout(function() {
+              angular.element(wrapper).removeClass("active");
+              resolve("1");
+            }, time);
+        }else{
+            angular.element(wrapper).on('snackbar-closed', function(){
+                if(timeMs == 0){
+                    resolve("1");
+                }
+            })
+        }
       });
     });
   };
   this.hide = function() {
     clearTimeout(timeout);
     var wrapper = document.getElementsByClassName("snackbar-wrapper");
+    angular.element(wrapper).triggerHandler('snackbar-closed');
     angular.element(wrapper).removeClass("active");
   };
 })
