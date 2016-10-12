@@ -1,10 +1,10 @@
 // (c) 2016 Flavio Colonna Romano
-// This code is licensed under GNU AGP v3 license (see license.txt for details)
+// This code is licensed under MIT license (see license.txt for details)
 angular.module("snackbar", ['ngAnimate']).service('$snackbar', function($http, $log, $animate, $q) {
   var timeout = {};
   var template = $http({
     method: 'GET',
-    url: 'lib/snackbar/snackbar.html'
+    url: './snackbar.html'
   }).then(function(result) {
     var body = document.getElementsByTagName("body")[0];
     var previousSnackbar = document.getElementsByClassName('snackbar-wrapper');
@@ -63,7 +63,7 @@ angular.module("snackbar", ['ngAnimate']).service('$snackbar', function($http, $
             timeout = setTimeout(function() {
               angular.element(wrapper).removeClass("active");
               resolve("1");
-            }, time);
+          }, timeMs);
         }else{
             angular.element(wrapper).on('snackbar-closed', function(){
                 if(timeMs == 0){

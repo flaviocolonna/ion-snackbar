@@ -1,4 +1,9 @@
 # ion-snackbar
+
+## Example
+
+View example in my [Plunker Desk](https://plnkr.co/edit/SSZspnCQSjWoKxyuME2J?p=preview)
+
 ## Description
 The new type of Android notification in Ionic.
 This component is new in the material design and it is supposed to be an alternative of the Toasts.
@@ -7,7 +12,12 @@ This component is optimized both for mobile and tablet. You can customize messag
 
 ## How to use:
 
-Snackbar js contains the angular module and service that your app needs to implement the snackbar. So first of all add as dependency the 'snackbar' module to your app module.
+First of all load the javascript file of the snackbar and related stylesheet:
+```html
+<link href="pathToLib/snackbar.css" rel="stylesheet" type="text/css"/>
+<script src="pathToLib/snackbar.js"></script>
+```
+Then add *snackbar* into your module as a dependency:
 ```javascript
 var myapp = angular.module('myapp',['snackbar'])
 ```
@@ -75,7 +85,7 @@ Each animation use GPU acceleration to give a smoother movement, essential for h
 
 ## License
 
-The code is licensed under GNU AGP v3 license. Check license.txt for further details.
+The code is licensed under MIT license. Check license.txt for further details.
 
 ## Contacts
 
