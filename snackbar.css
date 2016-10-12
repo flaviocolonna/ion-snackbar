@@ -1,0 +1,70 @@
+/* (c) 2016 Flavio Colonna Romano
+This code is licensed under GNU AGP v3 license (see license.txt for details)
+*/
+.snackbar-wrapper {
+   -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: fixed;
+  bottom: -250px;
+  z-index: 1000;
+  left: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.snackbar-content {
+  background: #323232;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  z-index: 1000;
+  width: 100%;
+  max-height: 80px;
+  box-sizing : border-box;
+  line-height: 22px;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.snackbar-wrapper.active {
+  bottom: 0;
+}
+
+.snackbar-msg {
+  margin: 0;
+}
+
+.snackbar-btn {
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-left:24px;
+}
+@media screen and (min-width: 640px) {
+  .snackbar-content {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    min-width: 0;
+    max-width: 568px;
+    box-sizing : border-box;
+    height: 48px;
+  }
+  .snackbar-msg {
+    min-width: 0;
+    max-width: 80%;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+}
