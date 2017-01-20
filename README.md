@@ -11,7 +11,26 @@ Its style is really simple but in the same time complicated if you want to follo
 This component is optimized both for mobile and tablet. You can customize message text, message color, button text, button color, button function and then, thanks to promises, you are able to detect when the Snackbar disappears in order to call your own function.
 
 ## How to use:
-
+```javascript
+Before use, replace MYPATH with the path you set to this lib (snackbar.html and snackbar-tablet.css):
+var template = $http({
+    method: 'GET',
+    url: 'MYPATH/snackbar.html'
+  }).then(function(result) {
+    var body = document.getElementsByTagName("body")[0];
+    var previousSnackbar = document.getElementsByClassName('snackbar-wrapper');
+    if (previousSnackbar.length == 0) {
+      if(navigator.userAgent.indexOf('Mobile') == -1) {
+        var head = document.getElementsByTagName('head');
+        angular.element(head).append('<link href="MYPATH/snackbar-tablet.css" rel="stylesheet">');
+      }
+      angular.element(body).append(result.data)
+    }
+    return result.data;
+  }, function(err) {
+    $log.log("Error getting html template", JSON.stringify(err))
+  });
+```
 First of all load the javascript file of the snackbar and related stylesheet:
 ```html
 <link href="pathToLib/snackbar.css" rel="stylesheet" type="text/css"/>
@@ -73,6 +92,11 @@ to execute something after the snackbar disappears. Timing in snackbar is expres
 *SHORT* will be 3000 MS, *LONG* will be 8000 MS and *INDETERMINATE* will not close automatically the snackbar.
 When *buttonName* is not defined you will have a simple snackbar without button. Remember that usually snackbar allows multi-line in mobile but just one line in tablet.
 Don't put too large text in snackbar due to has not been created for that at the start.
+
+## Versions
+
+- 1.1 (latest with snackbar tablet stylesheet injected via javascript)
+- 1.0 (first commit with working snackbar)
 
 ## Animation
 

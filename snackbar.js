@@ -9,6 +9,10 @@ angular.module("snackbar", ['ngAnimate']).service('$snackbar', function($http, $
     var body = document.getElementsByTagName("body")[0];
     var previousSnackbar = document.getElementsByClassName('snackbar-wrapper');
     if (previousSnackbar.length == 0) {
+      if(navigator.userAgent.indexOf('Mobile') == -1) {
+        var head = document.getElementsByTagName('head');
+        angular.element(head).append('<link href="./snackbar-tablet.css" rel="stylesheet">');
+      }
       angular.element(body).append(result.data)
     }
     return result.data;

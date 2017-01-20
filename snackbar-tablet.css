@@ -1,0 +1,19 @@
+/* (c) 2016 Flavio Colonna Romano
+This code is licensed under MIT license (see license.txt for details)
+*/
+.snackbar-content {
+   border-top-left-radius: 2px;
+   border-top-right-radius: 2px;
+   min-width: 0;
+   max-width: 568px;
+   height: 48px;
+ }
+ .snackbar-msg {
+   min-width: 0;
+   max-width: 80%;
+   display: block;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   margin: 0;
+ }
