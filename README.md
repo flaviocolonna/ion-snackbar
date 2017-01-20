@@ -11,8 +11,9 @@ Its style is really simple but in the same time complicated if you want to follo
 This component is optimized both for mobile and tablet. You can customize message text, message color, button text, button color, button function and then, thanks to promises, you are able to detect when the Snackbar disappears in order to call your own function.
 
 ## How to use:
-```javascript
+
 Before use, replace MYPATH with the path you set to this lib (snackbar.html and snackbar-tablet.css):
+```javascript
 var template = $http({
     method: 'GET',
     url: 'MYPATH/snackbar.html'
@@ -31,7 +32,7 @@ var template = $http({
     $log.log("Error getting html template", JSON.stringify(err))
   });
 ```
-First of all load the javascript file of the snackbar and related stylesheet:
+Then load the javascript file of the snackbar and related stylesheet:
 ```html
 <link href="pathToLib/snackbar.css" rel="stylesheet" type="text/css"/>
 <script src="pathToLib/snackbar.js"></script>
